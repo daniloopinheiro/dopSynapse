@@ -232,4 +232,4 @@ Tem dúvidas ou quer colaborar com o projeto? Fale comigo:
 * **Email Consultoria**: [contato@dopme.io](mailto:contato@dopme.io)
 * **LinkedIn**: [Danilo O. Pinheiro](https://www.linkedin.com/in/daniloopinheiro/)
 
-Desenvolvido por **Danilo O. Pinheiro** • dopme.io • DevsFree • FullCycle
+Desenvolvido por **Danilo O. Pinheiro** • DevsFree • dopme.io
