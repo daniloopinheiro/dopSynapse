@@ -1,178 +1,235 @@
-# Descrição
+# dopSynapse
 
-Este é um projeto de software que tem como objetivo [inserir objetivo principal do projeto, ex: resolver um problema específico, automatizar um processo, fornecer uma funcionalidade]. Ele foi desenvolvido utilizando [listar tecnologias e ferramentas principais, ex: .NET, RabbitMQ, MongoDB, etc.] e segue uma arquitetura [ex: MVC, DDD, microserviços, etc.] para garantir [escabilidade, desempenho, manutenibilidade, etc.].
+Arquitetura modular e escalável em .NET, com foco em mensageria, observabilidade e interoperabilidade para microsserviços modernos.
 
----
+O **dopSynapse** é um projeto base estruturado para suportar aplicações corporativas com alta complexidade, fornecendo separação clara de responsabilidades em camadas, suporte a múltiplos bancos de dados (relacionais e não-relacionais), integração com sistemas externos, autenticação, monitoramento e muito mais.
 
 ## Índice
 
-- [Visão Geral](#visão-geral)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Instalação](#instalação)
-- [Como Usar](#como-usar)
-- [Estrutura de Diretórios](#estrutura-de-diretórios)
-- [Configuração](#configuração)
-- [Contribuições](#contribuições)
-- [Licença](#licença)
-- [Contato](#contato)
-
----
+1. [Visão Geral](#visão-geral)
+2. [Instalação](#instalação)
+3. [Como Usar](#como-usar)
+4. [Arquitetura](#arquitetura)
+5. [Contribuições](#contribuições)
+6. [Licença](#licença)
+7. [Contato](#contato)
 
 ## Visão Geral
 
-Este projeto visa [explicar em poucas palavras o propósito do software e o valor que ele agrega]. Ele oferece as seguintes funcionalidades principais:
+O **dopSynapse** representa um modelo arquitetural baseado em boas práticas como Clean Architecture, Domain-Driven Design (DDD), SOLID, separação de contextos (Bounded Contexts) e uso de padrões modernos como CQRS, Event Sourcing, mensageria assíncrona e integração com observabilidade (OpenTelemetry, Health Checks, Logs estruturados etc).
 
-- **Funcionalidade 1**: [Descrição breve da funcionalidade]
-- **Funcionalidade 2**: [Descrição breve da funcionalidade]
-- **Funcionalidade 3**: [Descrição breve da funcionalidade]
+### Principais funcionalidades:
 
-A arquitetura do projeto segue [exemplo: Domain-Driven Design (DDD)], o que garante [benefícios como flexibilidade, escalabilidade, etc.].
-
----
-
-## Tecnologias Utilizadas
-
-Este projeto foi desenvolvido com as seguintes tecnologias:
-
-- **Tecnologia 1**: [Descrição da tecnologia 1, ex: .NET 8, Java, etc.]
-- **Tecnologia 2**: [Descrição da tecnologia 2, ex: RabbitMQ, MySQL, etc.]
-- **Tecnologia 3**: [Descrição da tecnologia 3, ex: Docker, Kubernetes, etc.]
-
----
+* Camadas bem definidas: `UI`, `API`, `Application`, `Domain`, `Infrastructure`, `Tests`
+* Suporte a bancos **relacionais** (SQL Server, PostgreSQL, MySQL) e **não-relacionais** (MongoDB, Redis, Cassandra, Elasticsearch)
+* Mensageria com Kafka, RabbitMQ, Azure Service Bus
+* Autenticação via JWT, OAuth, IdentityServer, Keycloak
+* Observabilidade com Logs, Metrics, Traces e HealthChecks
+* Estrutura pronta para CI/CD, testes automatizados, deploy via Docker/K8s
 
 ## Instalação
 
+Perfeito! Aqui está a seção **Pré-requisitos** atualizada com as principais IDEs recomendadas para trabalhar com o projeto `dopSynapse`:
+
 ### Pré-requisitos
 
-Certifique-se de que você tem as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
+Antes de começar, certifique-se de ter os seguintes itens instalados em seu ambiente de desenvolvimento:
 
-- **Ferramenta 1**: [Link para o download ou instrução de instalação]
-- **Ferramenta 2**: [Link para o download ou instrução de instalação]
+#### SDKs e Ferramentas
 
-### Passos para Instalar
+* [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download)
+* [Git](https://git-scm.com)
+* [Docker](https://www.docker.com) & [Docker Compose](https://docs.docker.com/compose/)
 
-1. Clone o repositório:
+#### IDEs Recomendadas
 
-   ```bash
-   git clone https://github.com/seu-usuario/nome-do-projeto.git
-   cd nome-do-projeto
-   ```
+As seguintes IDEs podem ser utilizadas para desenvolvimento completo do `dopSynapse`, incluindo backend e frontend (UI):
 
-2. Instale as dependências do projeto:
+* **[Visual Studio 2022+](https://visualstudio.microsoft.com/pt-br/)**
+  Recomendado para desenvolvimento full stack com suporte total a .NET, MAUI, Blazor, WinForms, WPF e testes.
+  Extensões úteis:
 
-   Se estiver utilizando o Visual Studio ou VS Code, abra a solução e restaure os pacotes.
+  * C# Dev Kit
+  * NuGet Package Manager
+  * Docker Tools
+  * GitHub Extension
 
-   Ou, se estiver utilizando a linha de comando, execute:
+* **[Rider (JetBrains)](https://www.jetbrains.com/rider/)**
+  IDE moderna e multiplataforma com suporte avançado a projetos .NET, integrações com Docker, Git e testes automatizados.
 
-   ```bash
-   dotnet restore
-   ```
+* **[Visual Studio Code](https://code.visualstudio.com/)**
+  Leve e extensível. Ideal para desenvolvimento modular, especialmente para camadas como `Infrastructure`, `Application` e testes.
+  Extensões recomendadas:
 
-3. [Instrução de configuração, ex: configurar o banco de dados, variáveis de ambiente, etc.]
+  * C# (OmniSharp)
+  * .NET Install Tool
+  * Docker
+  * GitLens
+  * Thunder Client ou REST Client para testes de API
 
-4. Para rodar o projeto localmente, use o seguinte comando:
+### Clonando o repositório
 
-   ```bash
-   dotnet run
-   ```
+```bash
+git clone https://github.com/daniloopinheiro/dopSynapse.git
+cd dopSynapse
+```
 
-   Ou, se estiver usando containers Docker, execute:
+### Subindo a infraestrutura base com Docker
 
-   ```bash
-   docker-compose up
-   ```
-
----
+```bash
+docker-compose up -d
+```
 
 ## Como Usar
 
-Este projeto pode ser utilizado para [explicar de forma prática como o usuário pode interagir com o sistema]. Exemplos de uso:
-
-1. **Endpoint 1**:
-   - **Método HTTP**: GET/POST
-   - **URL**: `/api/exemplo`
-   - **Descrição**: [Breve descrição do que esse endpoint faz]
-   
-2. **Endpoint 2**:
-   - **Método HTTP**: GET/POST
-   - **URL**: `/api/exemplo/{id}`
-   - **Descrição**: [Breve descrição do que esse endpoint faz]
-
-### Exemplos de uso com cURL ou Postman
-
-**Requisição de exemplo**:
+### Executar a API localmente
 
 ```bash
-curl -X GET http://localhost:5000/api/exemplo -H "Content-Type: application/json"
+cd dopSynapse.Api
+dotnet run
 ```
 
----
+A API estará disponível em: `https://localhost:5001`
+Swagger UI: `https://localhost:5001/swagger`
 
-## Estrutura de Diretórios
-
-A estrutura do projeto segue uma organização modular e de fácil manutenção:
-
-```
-src/
-├── API/                # Camada de apresentação (controladores e endpoints da API)
-├── Application/        # Camada de lógica de negócios
-├── Domain/             # Camada de domínio (entidades e interfaces)
-├── Infrastructure/     # Camada de infraestrutura (conexões com banco, serviços, etc.)
-```
-
----
-
-## Configuração
-
-Este projeto exige algumas configurações adicionais, como variáveis de ambiente, arquivos de configuração ou serviços externos. As instruções de configuração podem ser encontradas abaixo:
-
-### Configuração do Banco de Dados
-
-1. No arquivo `appsettings.json`, adicione suas configurações de banco de dados, por exemplo:
-
-```json
-{
-  "DatabaseSettings": {
-    "ConnectionString": "mongodb://localhost:27017",
-    "DatabaseName": "MeuBancoDeDados"
-  }
-}
-```
-
-2. Para configuração de variáveis de ambiente, adicione as seguintes variáveis ao seu ambiente de execução:
+### Rodar testes
 
 ```bash
-DATABASE_URL=mongodb://localhost:27017
-SECRET_KEY=alguma_chave_secreta
+dotnet test
 ```
 
-### Configuração de API Externa (se necessário)
+## Arquitetura Synapse
 
-Caso o projeto dependa de APIs externas, configure as credenciais ou chaves de acesso no arquivo de configuração.
+```mermaid
+graph TD
+    UI[dopSynapse.UI] --> A[dopSynapse.Api]
+    A -->|HTTP, Swagger| B[dopSynapse.Application]
+    B --> C[dopSynapse.Domain]
+    B --> D[dopSynapse.Infrastructure]
+    D --> C
+    B --> BB[dopSynapse.BuildingBlocks]
+    D --> BB
+    E[dopSynapse.Tests] --> A
+    E --> B
+    E --> C
+    E --> D
 
----
+    subgraph UI Interface do Usuário
+        UI
+    end
+
+    subgraph API
+        A
+    end
+
+    subgraph Application
+        B
+    end
+
+    subgraph Domain
+        C
+    end
+
+    subgraph Infrastructure
+        D
+    end
+
+    subgraph BuildingBlocks
+        BB
+    end
+
+    subgraph Tests
+        E
+    end
+```
+
+### Organização dos diretórios
+
+```
+Projects/
+│
+├── dopSynapse.UI/                         # Camada de interface do usuário
+│   ├── BlazorApp/                         # Aplicação web com Blazor (Server ou WASM)
+│   ├── MAUIApplication/                   # Aplicação mobile/desktop com .NET MAUI
+│   ├── WPFApp/                            # Aplicação desktop WPF (Windows Presentation Foundation)
+│   ├── WinUIApp/                          # Aplicação com WinUI (Windows moderno)
+│   ├── UWPApp/                            # Aplicação UWP (Universal Windows Platform)
+│   └── WinFormsApp/                       # Aplicação tradicional com Windows Forms
+│
+├── dopSynapse.Api/                        # Camada de exposição HTTP
+│   ├── Controllers/
+│   ├── Middlewares/
+│   ├── Configurations/
+│   └── Program.cs / Startup.cs
+│
+├── dopSynapse.Application/                # Casos de uso, serviços e orquestrações
+│   ├── Interfaces/
+│   ├── UseCases/
+│   ├── DTOs/
+│   ├── Validators/
+│   ├── Events/
+│   ├── Services/
+│   ├── Extensions/
+│   └── Mappings/
+│
+├── dopSynapse.Domain/                     # Regra de negócio central
+│   ├── Entities/
+│   ├── ValueObjects/
+│   ├── Enums/
+│   ├── Interfaces/
+│   ├── Services/
+│   ├── Events/
+│   ├── Exceptions/
+│   ├── Specifications/
+│   ├── Aggregates/
+│   └── Extensions/
+│
+├── dopSynapse.Infrastructure/             # Implementações técnicas de persistência, mensageria, etc.
+│   ├── Data/
+│   ├── Messagings/
+│   ├── Auths/
+│   ├── Observabilities/
+│   ├── Servers/
+│   ├── Configuration/
+│   └── Extensions/
+│
+├── dopSynapse.Tests/                      # Testes automatizados
+│   ├── Unit/
+│   ├── Integration/
+│   └── Mocks/
+│
+└── dopSynapse.BuildingBlocks/             # Pacotes genéricos reutilizáveis
+    ├── EventBus/
+    ├── Mediator/
+    ├── Notifications/
+    └── Extensions/
+```
 
 ## Contribuições
 
-Contribuições são bem-vindas! Para contribuir com o projeto, siga estas etapas:
+Contribuições são muito bem-vindas!
 
-1. Faça um **fork** do repositório.
-2. Crie uma nova branch para sua feature (ex: `git checkout -b feature/nova-feature`).
-3. Faça as alterações necessárias e commit (ex: `git commit -m 'Adiciona nova-feature'`).
-4. Envie as alterações para seu repositório (ex: `git push origin feature/nova-feature`).
-5. Crie um **pull request** para a branch principal do repositório original.
+### Como contribuir:
 
----
+1. Faça um fork do projeto
+2. Crie uma branch: `git checkout -b feature/nova-funcionalidade`
+3. Commit suas mudanças: `git commit -m 'feat: nova funcionalidade'`
+4. Push para a branch: `git push origin feature/nova-funcionalidade`
+5. Abra um Pull Request
+
+Para bugs, melhorias e dúvidas, utilize as [issues](https://github.com/daniloopinheiro/dopSynapse/issues).
 
 ## Licença
 
-Este projeto está licenciado sob a Licença [Nome da Licença, ex: MIT]. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 ## Contato
 
-Caso tenha dúvidas ou sugestões, entre em contato:
+Tem dúvidas ou quer colaborar com o projeto? Fale comigo:
 
-- **Email**: [dopme.io](mailto:daniloopinheiro@dopme.io)
-- **LinkedIn**: [Danilo O. Pinheiro](https://www.linkedin.com/in/daniloopinheiro/)
+* **Email Pessoal**: [daniloopro@gmail.com](mailto:daniloopro@gmail.com)
+* **Email Empresarial**: [devsfree@devsfree.com.br](mailto:devsfree@devsfree.com.br)
+* **Email Consultoria**: [contato@dopme.io](mailto:contato@dopme.io)
+* **LinkedIn**: [Danilo O. Pinheiro](https://www.linkedin.com/in/daniloopinheiro/)
+
+Desenvolvido por **Danilo O. Pinheiro** • dopme.io • DevsFree • FullCycle
