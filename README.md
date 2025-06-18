@@ -31,10 +31,15 @@ O `dopSynapse` segue princípios como **Clean Architecture**, **Domain-Driven De
 ### Principais funcionalidades:
 
 ✅ Camadas bem definidas: `UI`, `API`, `Application`, `Domain`, `Infrastructure`, `Tests`
+
 ✅ Suporte a bancos **relacionais** (SQL Server, PostgreSQL, MySQL) e **não-relacionais** (MongoDB, Redis, Cassandra, Elasticsearch)
+
 ✅ Integração com Kafka, RabbitMQ, Azure Service Bus
+
 ✅ Autenticação via JWT, OAuth, IdentityServer, Keycloak
+
 ✅ Monitoramento com Logs, Metrics, Traces e HealthChecks
+
 ✅ Estrutura pronta para CI/CD, testes automatizados, deploy via Docker/Kubernetes
 
 ---
